@@ -1,0 +1,58 @@
+import random
+
+#Fungsi untuk membuat daftar bilangan acak
+def generate_random_list(size):
+  """Membuat list berisi bilangan acak.
+
+  Args:
+    size: Jumlah elemen dalam list.
+
+  Returns:
+    List berisi bilangan acak.
+  """
+
+  return [random.randint(1, 100) for _ in range(size)]
+
+#Fungsi untuk mengurutkan daftar menggunakan bubble sort
+def bubble_sort(numbers):
+  """Mengurutkan list menggunakan algoritma bubble sort.
+
+  Args:
+    numbers: List yang akan diurutkan.
+  """
+  
+  n = len(numbers)
+
+#Melakukan iterasi menggunakan semua elemen dalam daftar
+  for i in range(n):
+    swapped = False
+    for j in range(0, n-i-1):
+      if numbers[j] > numbers[j+1] :
+        numbers[j], numbers[j+1] = numbers[j+1], numbers[j]
+        swapped = True
+
+    #Jika tidak ada pertukaran pada iterasi ini, daftar sudah terurut 
+    if swapped == False:
+        break
+
+    print("Iterasi ke-", i+1, ":", numbers)
+
+if __name__ == "__main__":
+  random_list = generate_random_list(50)
+
+  while True:
+    print("\nMenu:")
+    print("1. Tampilkan list bilangan acak")
+    print("2. Urutkan dengan bubble sort")
+    print("3. Keluar")
+
+    choice = int(input("Masukkan pilihan Anda: "))
+
+    if choice == 1:
+      print(random_list)
+    elif choice == 2:
+      bubble_sort(random_list)
+    elif choice == 3:
+      break
+    else:
+      print("Pilihan tidak valid.")
